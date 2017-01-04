@@ -1,0 +1,15 @@
+{
+  "name": "trackify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "knex": "knex"
+  },
+  "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.12.6",
+    "pg": "^6.1.2"
+  }
+}
