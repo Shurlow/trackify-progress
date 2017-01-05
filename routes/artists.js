@@ -64,23 +64,10 @@ router.patch('/artists/:id', (req, res, next) => {
 })
 
 router.delete('/artists/:id', (req, res, next) => {
-  let artist;
-
   knex('artists')
+    .del('*')
     .where('id', req.params.id)
-    .first()
-    .then((row) => {
-      if (!row) {
-        return next();
-      }
-
-      artist = row;
-
-      return knex('artists')
-        .del()
-        .where('id', req.params.id);
-    })
-  .then(() => {
+  .then((artist) => {
     delete artist.id;
     res.send(artist)
   })
@@ -89,7 +76,17 @@ router.delete('/artists/:id', (req, res, next) => {
   })
 })
 
-
+router.get('/artists/:id/tracks', (req, res, next) => {
+  knex('tracks')
+    .where('artist_id', req.params.id)
+    .orderBy('id')
+    .then((track) => {
+      res.send(track);
+    })
+    .catch((err) => {
+      next(err);
+    })
+})
 
 
 module.exports = router;
