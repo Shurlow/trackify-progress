@@ -9,6 +9,7 @@
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
