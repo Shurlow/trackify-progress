@@ -3,12 +3,13 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
+const { camelizeKeys, decamelizeKeys } = require('humps');
 
 router.get('/tracks', (_req, res, next) => {
   knex('tracks')
     .orderBy('id')
     .then((tracks) => {
-      res.send(tracks)
+      res.send(camelizeKeys(tracks))
     })
     .catch((err) => {
       next(err);
@@ -117,19 +118,5 @@ router.delete('/tracks/:id', (req, res, next) => {
     next(err);
   })
 })
-
-// router.delete('/artists/:id', (req, res, next) => {
-//   knex('artists')
-//       .del('*')
-//       .where('id', req.params.id)
-//   .then((artist) => {
-//     delete artist.id;
-//     res.send(artist)
-//   })
-//   .catch((err) => {
-//     next(next);
-//   })
-// })
-
 
 module.exports = router;
