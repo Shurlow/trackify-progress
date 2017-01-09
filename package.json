@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "knex": "knex"
+    "knex": "knex",
+    "heroku-postbuild": "knex migrate:latest"
+  },
+  "engines": {
+    "node": "7.2.1"
   },
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
   "license": "ISC",
@@ -17,6 +21,7 @@
     "pg": "^6.1.2"
   },
   "devDependencies": {
+    "foreman": "^2.0.0",
     "nodemon": "^1.11.0"
   }
 }
